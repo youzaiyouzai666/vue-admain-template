@@ -158,13 +158,34 @@ export const constantRoutes = [
       }
     ]
   },
+  {
+    path: '/me',
+    component: Layout,
+    // redirect: '/index',
+    children: [{
+      path: 'index',
+      name: 'me',
+      component: () => import('@/views/children/addchildren'),
+      meta: { title: 'me', icon: 'dashboard' }
+    }]
+  },
+  // {
+  //   path: '/addchildren',
+  //   component: Layout,
+  //   children:[
+  //     path: 'index',
+  //     name: 'children',
+  //     component: () => import('@/views/children/addchildren'),
+  //     meta: { title: 'Addchildren', icon: 'form' }
+  //   ]
+  // },
 
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
 
 const createRouter = () => new Router({
-  // mode: 'history', // require service support
+  mode: 'history', // require service support
   scrollBehavior: () => ({ y: 0 }),
   routes: constantRoutes
 })
