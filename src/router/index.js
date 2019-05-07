@@ -70,7 +70,7 @@ export const constantRoutes = [
       ]
     }, {
       path: 'role',
-      name: '角色管理',
+      name: '角色权限',
       component: () => import('@/views/role/index'),
       meta: { title: '组织管理', icon: 'dashboard' },
       redirect: '/role/table',
