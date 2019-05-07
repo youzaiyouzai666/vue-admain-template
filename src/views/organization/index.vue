@@ -34,7 +34,6 @@ export default {
   },
   computed: {
     headerRoutes() {
-      debugger
       const routers = this.$router.options.routes
       const header = routers
         .filter(r => r.path === '/')[0]
