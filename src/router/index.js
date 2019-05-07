@@ -72,7 +72,7 @@ export const constantRoutes = [
       path: 'role',
       name: '角色权限',
       component: () => import('@/views/role2/index'),
-      meta: { title: '组织管理', icon: 'dashboard' }
+      meta: { title: '角色权限', icon: 'dashboard' }
     }]
   },
   // 404 page must be placed at the end !!!
