@@ -36,10 +36,9 @@ export default {
     headerRoutes() {
       debugger
       const routers = this.$router.options.routes
-      const route = this.$route
       const header = routers
-        .filter(item => item.name === 'header')[0]
-        .children.map(v => ({ ...v, path: '/' + v.path }))
+        .filter(r => r.path === '/')[0]
+        .children.filter(r => r.path === 'organization')[0].children
       return header
     }
   },
