@@ -71,7 +71,7 @@ export const constantRoutes = [
     }, {
       path: 'role',
       name: '角色权限',
-      component: () => import('@/views/role/index'),
+      component: () => import('@/views/role2/index'),
       meta: { title: '组织管理', icon: 'dashboard' },
       redirect: '/role/table',
       children: [
