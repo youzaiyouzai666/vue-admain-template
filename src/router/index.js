@@ -58,13 +58,13 @@ export const constantRoutes = [
         {
           path: 'table',
           name: 'Table',
-          component: () => import('@/views/table/index'),
+          component: () => import('@/views/organization/table'),
           meta: { title: 'Table', icon: 'table' }
         },
         {
           path: 'tree',
           name: 'Tree',
-          component: () => import('@/views/tree/index'),
+          component: () => import('@/views/organization/tree'),
           meta: { title: 'Tree', icon: 'tree' }
         }
       ]
@@ -72,22 +72,7 @@ export const constantRoutes = [
       path: 'role',
       name: '角色权限',
       component: () => import('@/views/role2/index'),
-      meta: { title: '组织管理', icon: 'dashboard' },
-      redirect: '/role/table',
-      children: [
-        {
-          path: 'table',
-          name: 'Table',
-          component: () => import('@/views/table/index'),
-          meta: { title: 'Table', icon: 'table' }
-        },
-        {
-          path: 'tree',
-          name: 'Tree',
-          component: () => import('@/views/tree/index'),
-          meta: { title: 'Tree', icon: 'tree' }
-        }
-      ]
+      meta: { title: '组织管理', icon: 'dashboard' }
     }]
   },
   // 404 page must be placed at the end !!!

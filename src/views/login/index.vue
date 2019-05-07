@@ -10,7 +10,6 @@
     >
       <div class="title-container">
         <h3 class="title">{{ $t('login.title') }}</h3>
-        <lang-select class="set-language" />
       </div>
 
       <el-form-item prop="username">
@@ -58,43 +57,16 @@
         style="width:100%;margin-bottom:30px;"
         @click.native.prevent="handleLogin"
       >{{ $t('login.logIn') }}</el-button>
-
-      <div style="position:relative">
-        <div class="tips">
-          <span>{{ $t('login.username') }} : admin</span>
-          <span>{{ $t('login.password') }} : {{ $t('login.any') }}</span>
-        </div>
-        <div class="tips">
-          <span style="margin-right:18px;">{{ $t('login.username') }} : editor</span>
-          <span>{{ $t('login.password') }} : {{ $t('login.any') }}</span>
-        </div>
-
-        <el-button
-          class="thirdparty-button"
-          type="primary"
-          @click="showDialog=true"
-        >{{ $t('login.thirdparty') }}</el-button>
-      </div>
     </el-form>
-
-    <el-dialog :title="$t('login.thirdparty')" :visible.sync="showDialog">
-      {{ $t('login.thirdpartyTips') }}
-      <br>
-      <br>
-      <br>
-      <social-sign />
-    </el-dialog>
   </div>
 </template>
 
 <script>
 import { validUsername } from '@/utils/validate'
-import LangSelect from '@/components/LangSelect'
-import SocialSign from './components/SocialSignin'
 
 export default {
   name: 'Login',
-  components: { LangSelect, SocialSign },
+  components: {},
   data() {
     const validateUsername = (rule, value, callback) => {
       if (!validUsername(value)) {
@@ -125,17 +97,7 @@ export default {
       },
       passwordType: 'password',
       capsTooltip: false,
-      loading: false,
-      showDialog: false,
-      redirect: undefined
-    }
-  },
-  watch: {
-    $route: {
-      handler: function(route) {
-        this.redirect = route.query && route.query.redirect
-      },
-      immediate: true
+      loading: false
     }
   },
   created() {
@@ -196,24 +158,6 @@ export default {
         }
       })
     }
-    // afterQRScan() {
-    //   if (e.key === 'x-admin-oauth-code') {
-    //     const code = getQueryObject(e.newValue)
-    //     const codeMap = {
-    //       wechat: 'code',
-    //       tencent: 'code'
-    //     }
-    //     const type = codeMap[this.auth_type]
-    //     const codeName = code[type]
-    //     if (codeName) {
-    //       this.$store.dispatch('LoginByThirdparty', codeName).then(() => {
-    //         this.$router.push({ path: this.redirect || '/' })
-    //       })
-    //     } else {
-    //       alert('第三方登录失败')
-    //     }
-    //   }
-    // }
   }
 }
 </script>

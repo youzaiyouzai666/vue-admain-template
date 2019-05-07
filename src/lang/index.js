@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
-import Cookies from 'js-cookie'
 import elementEnLocale from 'element-ui/lib/locale/lang/en' // 英语
 import elementZhLocale from 'element-ui/lib/locale/lang/zh-CN'// 简体中文
 import enLocale from './en'
@@ -19,9 +18,6 @@ const messages = {
   }
 }
 export function getLanguage() {
-  const chooseLanguage = Cookies.get('language')
-  if (chooseLanguage) return chooseLanguage
-
   // if has not choose language
   const language = (navigator.language || navigator.browserLanguage).toLowerCase()
   const locales = Object.keys(messages)
