@@ -93,11 +93,23 @@ export const constantRoutes = [
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
+const addParent = (routes) => {
+  if (!routes || routes.length < 0) {
+    return routes
+  }
+  return routes.map(route => {
+    route.parent = route
+    if (route.children) {
+      route.children = addParent(route.children)
+    }
+    return route
+  })
+}
 
 const createRouter = () => new Router({
   mode: 'history', // require service support
   scrollBehavior: () => ({ y: 0 }),
-  routes: constantRoutes
+  routes: addParent(constantRoutes)
 })
 
 const router = createRouter()
